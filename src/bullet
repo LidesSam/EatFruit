@@ -1,0 +1,35 @@
+ //alert("create");
+var Bullet = new Phaser.Class({
+
+            Extends: Phaser.GameObjects.Image,
+    
+            initialize:
+    
+            function Bullet (scene)
+            {
+                Phaser.GameObjects.Image.call(this, scene, 0, 0, 'cherry');
+    
+                this.speed = Phaser.Math.GetSpeed(200, 1);
+            },
+    
+            fire: function (x, y)
+            {
+                this.setPosition(x, y);
+    
+                this.setActive(true);
+                this.setVisible(true);
+           
+            },
+    
+            update: function (time, delta)
+            {
+                this.y -= this.speed * delta;
+    
+                if (this.y <0)
+                {
+                    this.setActive(false);
+                    this.setVisible(false);
+                }
+            }
+    
+        });
